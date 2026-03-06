@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Stats de GitHub — chetodann</title>
+  <meta name="description" content="Página de estadísticas de GitHub con tarjetas dinámicas (stats, lenguajes y racha)." />
+  <link rel="preconnect" href="https://github-readme-stats.vercel.app">
+  <link rel="preconnect" href="https://streak-stats.demolab.com">
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <header class="container">
+    <h1>📊 Stats de GitHub — <span id="title-username">chetodann</span></h1>
+    <p class="lead">Vista simple y personalizable de tus estadísticas de GitHub para usar en GitHub Pages o enlazar desde tu README.</p>
+  </header>
+  <main class="container">
+    <section class="card controls">
+      <h2>⚙️ Configuración</h2>
+      <form id="controls-form">
+        <div class="grid">
+          <label>
+            <span>Usuario</span>
+            <input id="gh-username" type="text" value="chetodann" placeholder="tu_usuario" />
+          </label>
+          <label>
+            <span>Tema</span>
+            <select id="theme">
+              <option value="dark" selected>dark</option>
+              <option value="default">default</option>
+              <option value="radical">radical</option>
+              <option value="gruvbox">gruvbox</option>
+              <option value="tokyonight">tokyonight</option>
+              <option value="onedark">onedark</option>
+              <option value="cobalt">cobalt</option>
+              <option value="synthwave">synthwave</option>
+              <option value="highcontrast">highcontrast</option>
+              <option value="dracula">dracula</option>
+            </select>
+          </label>
+<label class="checkbox">
+            <input id="show-icons" type="checkbox" checked /> Mostrar iconos
+          </label>
+          <label class="checkbox">
+            <input id="hide-border" type="checkbox" /> Ocultar borde
+          </label>
+        </div>
+      </form>
+    </section>
+
+<section class="card">
+      <h2>⭐ Estadísticas generales</h2>
+      <div class="img-wrap">
+        <img id="stats-card" alt="GitHub Stats" />
+      </div>
+      <details>
+        <summary>Ver URL</summary>
+        <code id="stats-url"></code>
+      </details>
+    </section>
+
+  <section class="card">
+      <h2>🗣️ Lenguajes más usados</h2>
+      <div class="img-wrap">
+        <img id="langs-card" alt="Top Languages" />
+      </div>
+      <details>
+        <summary>Ver URL</summary>
+        <code id="langs-url"></code>
+      </details>
+    </section>
+
+<section class="card">
+      <h2>🔥 Racha de contribuciones</h2>
+      <div class="img-wrap">
+        <img id="streak-card" alt="GitHub Streak" />
+      </div>
+      <details>
+        <summary>Ver URL</summary>
+        <code id="streak-url"></code>
+      </details>
+
+/section>
+
+    <section class="card info">
+      <h2>ℹ️ Notas</h2>
+      <ul>
+        <li>Los datos vienen de servicios públicos que generan imágenes dinámicas. Si algo no carga, suele ser por límites de API o caché: espera unos minutos y recarga.</li>
+        <li>Para máxima fiabilidad puedes auto‑hospedar <em>github-readme-stats</em> o usar un token propio.</li>
+      </ul>
+
+</section>
+
+    <section class="card howto">
+      <h2>🚀 Cómo publicarla en GitHub Pages</h2>
+      <ol>
+        <li>Crea el repositorio <code>chetodann.github.io</code> o una carpeta <code>Stats</code> dentro de tu sitio existente.</li>
+        <li>Sube estos archivos (manteniendo la estructura).</li>
+        <li>En <strong>Settings ▸ Pages</strong>, selecciona la rama (p. ej. <em>main</em>) y la carpeta <em>root</em>. Guarda.</li>
+
+<li>Espera 1‑2 minutos. Tu página quedará accesible en <code>https://chetodann.github.io/Stats/</code>.</li>
+      </ol>
+    </section>
+  </main>
+
+  <footer class="container footer">
+    <p>Hecho con ❤ · Fuentes: github-readme-stats & github-readme-streak-stats</p>
+  </footer>
+
+<script>
+    const $ = (id) => document.getElementById(id);
+
+    function buildUrls() {
+      const user = $("gh-username").value.trim() || "chetodann";
+      const theme = $("theme").value;
+      const showIcons = $("show-icons").checked ? "&show_icons=true" : "";
+      const hideBorder = $("hide-border").checked ? "&hide_border=true" : "";
+
+const stats = `https://github-readme-stats.vercel.app/api?username=${user}` + showIcons + `&theme=${theme}` + hideBorder;
+      const langs = `https://github-readme-stats.vercel.app/api/top-langs/?username=${user}` + `&layout=compact&langs_count=10&theme=${theme}` + hideBorder;
+      const streak = `https://streak-stats.demolab.com?user=${user}` + `&theme=${theme}` + hideBorder;
+
+      $("stats-card").src = stats;
+      $("langs-card").src = langs;
+      $("streak-card").src = streak;
+
+$("stats-url").textContent = stats;
+      $("langs-url").textContent = langs;
+      $("streak-url").textContent = streak;
+
+      $("title-username").textContent = user;
+    }
+
+    ["gh-username","theme","show-icons","hide-border"].forEach(id => {
+      $(id).addEventListener('input', buildUrls);
+      $(id).addEventListener('change', buildUrls);
+
+});
+
+    buildUrls();
+  </script>
+</body>
+</html>
