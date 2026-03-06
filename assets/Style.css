@@ -1,1 +1,18 @@
+:root{ --bg:#0f172a; --fg:#e5e7eb; --muted:#94a3b8; --card:#111827; --border:#1f2937; --accent:#22d3ee }
+@media (prefers-color-scheme: light){ :root{ --bg:#ffffff; --fg:#0f172a; --muted:#475569; --card:#f8fafc; --border:#e2e8f0; --accent:#0ea5e9 } }
+*{ box-sizing:border-box }
+body{ margin:0; font-family: system-ui, sans-serif; background:var(--bg); color:var(--fg); }
+.container{ width:min(100%, 980px); margin:auto; padding:24px }
+.lead{ color:var(--muted); margin-top:6px }
+.card{ background:var(--card); border:1px solid var(--border); border-radius:12px; padding:16px; margin:16px 0 }
+.card h2{ margin-top:0 }
+.controls .grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap:12px }
+label{ display:flex; flex-direction:column; gap:6px; font-size:14px; color:var(--muted) }
+input[type="text"], select{ padding:10px 12px; background:transparent; color:var(--fg); border:1px solid var(--border); border-radius:8px }
+.checkbox{ flex-direction:row; align-items:center; gap:8px }
+.img-wrap{ display:flex; justify-content:center; padding:8px }
+.img-wrap img{ max-width:100%; border-radius:8px }
+details{ margin-top:8px; color:var(--muted) }
+code{ user-select:all; word-break:break-all }
+.footer{ text-align:center; color:var(--muted) }
 
